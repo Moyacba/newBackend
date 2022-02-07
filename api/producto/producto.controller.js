@@ -1,3 +1,24 @@
+const Producto = require('./producto.model');
+
+module.exports = {
+    getAllProductos: async(req, res) => {
+        const productos = await Producto.find()
+        try {
+            res.status(200).json(productos)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    
+    addProducto: async(req, res) => {
+        try {
+            await Producto(req.body).save()
+            res.status(200).json('Producto registrado')
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    }
+}
 /* const { Producto } = require('../dbSequelize');
 
 module.exports = {

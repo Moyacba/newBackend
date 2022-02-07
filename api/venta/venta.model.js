@@ -1,4 +1,26 @@
-const moment = require('moment');
+const mongoose = require('mongoose');
+
+const ventaSchema = mongoose.Schema({
+    cliente: { type: String },
+    total: { type: Number },
+    pago: { type: String },
+    estado: { type: String },
+    productos: [{
+        codigo: { type: Number },
+        categoria: { type: String },
+        producto: { type: String },
+        precioCompra: { type: Number },
+        precioVenta: { type: Number },
+        stock: { type: Number },
+        proveedor: { type: String },
+        detalles: { type: String }
+    }],
+    detalles: { type: String },
+})
+
+module.exports = mongoose.model('Venta', ventaSchema)
+
+/* const moment = require('moment');
 
 module.exports = (sequelize, DataType) => {
     return sequelize.define('venta', {
@@ -34,4 +56,4 @@ module.exports = (sequelize, DataType) => {
             }
         }
     })
-};
+}; */

@@ -1,5 +1,19 @@
 const moment = require('moment')
+const mongoose = require('mongoose')
 
+const productoSchema = mongoose.Schema({
+    codigo: {type: Number},
+    categoria: {type: String},
+    producto: {type: String},
+    precioCompra: {type: Number},
+    precioVenta: {type: Number},
+    stock: {type: Number},
+    proveedor: {type: String},
+    detalles: {type: String},
+})
+
+module.exports = mongoose.model('Producto', productoSchema)
+/* 
 module.exports = (sequelize, type) => {
     return sequelize.define('product', {
         idProduct: {
@@ -28,3 +42,4 @@ module.exports = (sequelize, type) => {
         }
     })
 };
+ */

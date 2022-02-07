@@ -21,6 +21,21 @@ module.exports = {
     },
 
     deleteNota: async(req, res) => {
-        console.log(req.params)
+        try {
+            const nota = await Notas.findById(req.params.id)
+            await nota.remove()
+            res.status(200).json('Eliminado correctamente')
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+
+    deleteNota2: async(req, res) => {
+        try {
+            await Notas.remove({nota: req.body.nota})
+            res.status(200).json('Se elimino correctamente')
+        } catch (error) {
+            res.status(500).json(error)
+        }
     }
 }
