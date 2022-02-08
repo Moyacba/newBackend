@@ -17,6 +17,25 @@ module.exports = {
         } catch (error) {
             res.status(500).json(error)
         }
+    },
+
+    putProducto: async(req, res) => {
+        try {
+            console.log(req.body._id)
+            await Producto.findByIdAndUpdate(req.body._id, {
+                codigo: req.body.codigo,
+                producto: req.body.producto,
+                categoria: req.body.categoria,
+                stock: req.body.stock,
+                precioCompra: req.body.precioCompra,
+                precioVenta: req.body.precioVenta,
+                proveedor: req.body.proveedor,
+                detalles: req.body.detalles,
+            })
+            res.status(200).json('Producto registrado')
+        } catch (error) {
+            res.status(500).json(error)
+        }
     }
 }
 /* const { Producto } = require('../dbSequelize');

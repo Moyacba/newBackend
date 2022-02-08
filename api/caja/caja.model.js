@@ -1,4 +1,21 @@
-const moment = require('moment')
+const mongoose = require('mongoose');
+
+const cajaSchema = mongoose.Schema({
+    active: {type: Boolean},
+    turno: {type: String},
+    inicio: {type: Number},
+    efectivoV: {type: Number},
+    debitoV: {type: Number},
+    creditoV: {type: Number},
+    efectivoS: {type: Number},
+    debitoS: {type: Number},
+    creditoS: {type: Number},
+    gastos: {type: Number},
+})
+
+module.exports = mongoose.model('caja', cajaSchema)
+
+/* const moment = require('moment')
 
 module.exports = (sequelize, type) => {
     return sequelize.define('box', {
@@ -30,4 +47,4 @@ module.exports = (sequelize, type) => {
             }
         }
     })
-}
+} */
