@@ -1,4 +1,17 @@
-const moment = require('moment')
+const mongoose = require('mongoose')
+
+const compraSchema = mongoose.Schema({
+    producto: { type: String },
+    categoria: { type: String },
+    cantidad: { type: Number },
+    precio: { type: Number },
+    proveedor: { type: String },
+    detalles: { type: String },
+})
+
+module.exports = mongoose.model('Compra', compraSchema)
+
+/* const moment = require('moment')
 
 module.exports = (sequelize, type) => {
     return sequelize.define('compras', {
@@ -26,4 +39,4 @@ module.exports = (sequelize, type) => {
             }
         }
     })
-}
+} */

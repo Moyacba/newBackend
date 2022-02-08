@@ -1,4 +1,22 @@
-const moment = require('moment');
+const mongoose = require('mongoose')
+
+const servicioSchema = mongoose.Schema({
+    cliente: { type: String },
+    telefono: { type: String },
+    producto: { type: String },
+    categoria: { type: String },
+    motivo: { type: String },
+    presupuesto: { type: Number },
+    repuesto: { type: Number },
+    pago: { type: String },
+    estado: { type: String },
+    detalles: { type: String },
+})
+
+module.exports = mongoose.model('Servicio', servicioSchema)
+
+
+/* const moment = require('moment');
 moment.locale('es')
 
 module.exports = (sequelize, type) => {
@@ -31,4 +49,4 @@ module.exports = (sequelize, type) => {
             }
         }
     })
-};
+}; */
