@@ -16,7 +16,7 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use(cors());
 
 //settings
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 4000);
 app.use(express.static(__dirname + '/public'));
 
 //inizialitations
