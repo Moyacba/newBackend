@@ -21,19 +21,34 @@ module.exports = {
 
     putServicio: async (req, res) => {
         try {
-            console.log(req.body._id)
-            await Producto.findByIdAndUpdate(req.body._id, {
-                cliente: req.body.cliente,
-                telefono: req.body.telefono,
-                producto: req.body.producto,
-                categoria: req.body.categoria,
-                motivo: req.body.motivo,
-                presupuesto: req.body.presupuesto,
-                repuesto: req.body.repuesto,
-                pago: req.body.pago,
-                estado: req.body.estado,
-                detalles: req.body.detalles
-            })
+            const id = req.body._id
+            const data = req.body
+            await Servicio.findByIdAndUpdate(id, data
+                // {
+                // cliente: req.body.cliente,
+                // telefono1: req.body.telefono,
+                // telefono2: req.body.telefono,
+                // obsCliente: req.body.obsCliente,
+                // categoria: req.body.categoria,
+                // marca: req.body.marca,
+                // motivo: req.body.motivo,
+                // total: req.body.total,
+                // senia: req.body.senia,
+                // obsProducto: req.body.obsProducto,
+                // contrasenia: req.body.contrasenia,
+                // sim: req.body.sim,
+                // sd: req.body.sd,
+                // acc: req.body.acc,
+                // dato1: req.body.dato1,
+                // dato2: req.body.dato2,
+                // dato3: req.body.dato3,
+                // pago: req.body.pago,
+                // estado: req.body.estado,
+                // esobsTecnicotado: req.body.obsTecnico,
+                // fechaIn: req.body.fechaIn,
+                // fechaOut: req.body.fechaOut,
+            // }
+            )
             res.status(200).json('Servicio actualizado!')
         } catch (error) {
             res.status(500).json(error)
