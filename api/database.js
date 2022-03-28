@@ -8,5 +8,5 @@ mongoose.connect('mongodb+srv://ModotecnoDB:m39623718@cluster0.ze1hx.mongodb.net
     
 })
     .then(db => console.log('DB is connected'))
-    .catch(err => console.error(err))
+    .catch(err => console.error("aqui" + err))
 

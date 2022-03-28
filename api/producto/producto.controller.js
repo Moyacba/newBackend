@@ -1,7 +1,9 @@
+const { findByIdAndUpdate } = require('./producto.model');
 const Producto = require('./producto.model');
 
+
 module.exports = {
-    getAllProductos: async(req, res) => {
+    getAllProductos: async (req, res) => {
         const productos = await Producto.find()
         try {
             res.status(200).json(productos)
@@ -9,17 +11,19 @@ module.exports = {
             res.status(500).json(error)
         }
     },
-    
-    addProducto: async(req, res) => {
+
+    addProducto: async (req, res) => {
         try {
-            await Producto(req.body).save()
+            var prod = req.body
+            prod.img = { data: '', contentType: '' }
+            await Producto(prod).save()
             res.status(200).json('Producto registrado')
         } catch (error) {
             res.status(500).json(error)
         }
     },
 
-    putProducto: async(req, res) => {
+    putProducto: async (req, res) => {
         try {
             console.log(req.body._id)
             await Producto.findByIdAndUpdate(req.body._id, {
@@ -31,6 +35,19 @@ module.exports = {
                 precioVenta: req.body.precioVenta,
                 proveedor: req.body.proveedor,
                 detalles: req.body.detalles,
+            })
+            res.status(200).json('Producto registrado')
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+
+    imgProducto: async (req, res) => {
+        console.log('id: ',req.params.id)
+        console.log('Url: ',req.body.data)
+        try {
+            await Producto.findByIdAndUpdate(req.params.id, {
+                img: req.body.data
             })
             res.status(200).json('Producto registrado')
         } catch (error) {

@@ -4,10 +4,13 @@ const bodyparser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
 const app = express();
+const fileupload = require('express-fileupload')
+const path = require('path');
+
 
 require('./api/database');
-
-//Middlewares
+  
+  //Middlewares
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'));
@@ -17,7 +20,7 @@ app.use(cors());
 
 //settings
 app.set('port', process.env.PORT || 5000);
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('/public'));
 
 //inizialitations
 app.listen(app.get('port'), () => {
