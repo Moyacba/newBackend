@@ -1,4 +1,4 @@
-const { findByIdAndUpdate } = require('./producto.model');
+const { findByIdAndUpdate, findById } = require('./producto.model');
 const Producto = require('./producto.model');
 
 
@@ -12,10 +12,14 @@ module.exports = {
         }
     },
 
+    getProducto: async(req, res) => {
+        const producto = await Producto.findById(req.params.id)
+        res.status(200).json(producto)
+    },
+
     addProducto: async (req, res) => {
         try {
             var prod = req.body
-            prod.img = { data: '', contentType: '' }
             await Producto(prod).save()
             res.status(200).json('Producto registrado')
         } catch (error) {
