@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
 const ventaSchema = mongoose.Schema({
+    fecha: {type: Date},
     cliente: { type: String },
     total: { type: Number },
     pago: { type: String },
     estado: { type: String },
     productos: [{
+        fecha: {type: Date},
         codigo: { type: Number },
         categoria: { type: String },
         producto: { type: String },

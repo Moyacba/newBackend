@@ -2,6 +2,7 @@ const moment = require('moment')
 const mongoose = require('mongoose')
 
 const productoSchema = mongoose.Schema({
+    fecha: {type: Date},
     codigo: {type: Number},
     categoria: {type: String},
     producto: {type: String},

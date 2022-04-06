@@ -20,8 +20,9 @@ const servicioSchema = mongoose.Schema({
     dato3: { type: Array },
     estado: { type: String },
     obsTecnico: { type: String },
-    fechaIn: { type: String },
-    fechaOut: { type: String }
+    fechaEstado: {type: Array},
+    fechaIn: { type: Date },
+    fechaOut: { type: Date }
 })
 
 module.exports = mongoose.model('Servicio', servicioSchema)

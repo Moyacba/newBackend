@@ -13,7 +13,6 @@ module.exports = {
     getOpenCaja: async(req, res) => {
         try {
             const caja = await Caja.findOne({ active: true })
-            console.log(caja)
             res.status(200).json(caja)
         } catch (error) {
             res.status(500).send(error)
@@ -22,8 +21,8 @@ module.exports = {
 
     postCaja: async(req, res) => {
         try {
-            await Caja(req.body).save()
-            res.status(200).json('Caja creada')
+            const caja = await Caja(req.body).save()
+            res.status(200).json(caja)
         } catch (error) {
             res.status(500).json(error)
             console.log(error)
@@ -85,6 +84,23 @@ module.exports = {
             res.status(200).json('Caja actualizada')
         } catch (error) {
             res.status(500).json(error)
+        }
+    },
+
+    // putIdCaja: async (req, res) => {
+    //     try {
+    //         await Caja.findByIdAndUpdate(req.params._id, {gastos: })
+    //     } catch (error) {
+    //         res.status(500).json('Error en putIdCaja: ', error)
+    //     }
+    // },
+
+    getIdCajaActual: async (req, res) => {
+        try {
+            const box = await Caja.findById(req.params._id)
+            res.status(200).json(box)
+        } catch (error) {
+            res.status(500).json('Error en idCaja: ', error)
         }
     }
 }

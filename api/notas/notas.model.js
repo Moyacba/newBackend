@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const notasSchema = mongoose.Schema({
+    fecha: {type: Date},
     nota: {
         type: String
     }

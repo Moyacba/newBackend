@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const cajaController = require('./caja.controller')
 
+// router.get('/:id', cajaController.getIdCajaActual);
 router.get('/id/', cajaController.getIdCaja);
 router.get('/', cajaController.getAllCaja);
 router.get('/open', cajaController.getOpenCaja);

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const compraSchema = mongoose.Schema({
+    fecha: {type: Date},
     producto: { type: String },
     categoria: { type: String },
     cantidad: { type: Number },

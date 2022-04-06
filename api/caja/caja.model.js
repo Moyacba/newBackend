@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const cajaSchema = mongoose.Schema({
+    fechaIn: {type: Date},
+    fechaOut: {type: Date},
     active: {type: Boolean},
     turno: {type: String},
     inicio: {type: Number},
