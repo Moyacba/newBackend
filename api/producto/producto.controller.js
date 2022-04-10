@@ -1,4 +1,4 @@
-const { findByIdAndUpdate, findById } = require('./producto.model');
+const { findByIdAndUpdate, findById, findOneAndUpdate } = require('./producto.model');
 const Producto = require('./producto.model');
 
 
@@ -12,19 +12,42 @@ module.exports = {
         }
     },
 
-    getProducto: async(req, res) => {
+    getProducto: async (req, res) => {
         const producto = await Producto.findById(req.params.id)
         res.status(200).json(producto)
     },
 
+    getOneProducto: async (req, res) => {
+        console.log(req.params.id)
+        const producto = await Producto.findOne({ codigo: req.params.id })
+        res.status(200).json(producto)
+    },
+
     addProducto: async (req, res) => {
-        try {
-            var prod = req.body
-            await Producto(prod).save()
-            res.status(200).json('Producto registrado')
-        } catch (error) {
-            res.status(500).json(error)
+        const validar = await Producto.findOne({ codigo: req.body.codigo })
+        if (validar) {
+            res.status(300).json('Ya existe articulo con ese codigo')
+        } else {
+            await Producto(req.body).save()
+            res.status(200).json('Producto registrado con exito!')
         }
+        // if (validar) {
+        //     try {
+        //         validar.articulo.push(req.body.articulo)
+        //         await Producto(validar).save()
+        //         res.status(200).json('Producto registrado')
+        //     } catch (error) {
+        //         res.status(500).json('Codigo ya existe, error en push articulo: ', error)
+        //     }
+        // } else {
+        //     try {
+        //         var prod = req.body
+        //         await Producto(prod).save()
+        //         res.status(200).json('Producto registrado')
+        //     } catch (error) {
+        //         res.status(500).json(error)
+        //     }
+        // }
     },
 
     putProducto: async (req, res) => {
@@ -32,13 +55,18 @@ module.exports = {
             console.log(req.body._id)
             await Producto.findByIdAndUpdate(req.body._id, {
                 codigo: req.body.codigo,
-                producto: req.body.producto,
+                fecha: req.body.fecha,
                 categoria: req.body.categoria,
-                stock: req.body.stock,
+                producto: req.body.producto,
                 precioCompra: req.body.precioCompra,
                 precioVenta: req.body.precioVenta,
+                fechaPrecioVenta: req.body.fechaPrecioVenta,
+                stock: req.body.stock,
                 proveedor: req.body.proveedor,
                 detalles: req.body.detalles,
+                img: req.body.img,
+                codAlt: req.body.codAlt,
+                atributos: req.body.atributos
             })
             res.status(200).json('Producto registrado')
         } catch (error) {
@@ -46,9 +74,20 @@ module.exports = {
         }
     },
 
+    putIdProducto: async (req, res) => {
+        // console.log(req.params.id)
+        // const varProd = await Producto.findOneAndUpdate(
+        //     { codigo: req.params.id},
+        //     {$push articulo: req.body.producto})
+        // if (varProd) {
+
+        // }
+        res.status(200).json('nada')
+    },
+
     imgProducto: async (req, res) => {
-        console.log('id: ',req.params.id)
-        console.log('Url: ',req.body.data)
+        console.log('id: ', req.params.id)
+        console.log('Url: ', req.body.data)
         try {
             await Producto.findByIdAndUpdate(req.params.id, {
                 img: req.body.data

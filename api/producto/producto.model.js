@@ -1,17 +1,32 @@
 const moment = require('moment')
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Types.ObjectId
 
 const productoSchema = mongoose.Schema({
-    fecha: {type: Date},
-    codigo: {type: Number},
-    categoria: {type: String},
-    producto: {type: String},
-    precioCompra: {type: Number},
-    precioVenta: {type: Number},
-    stock: {type: Number},
-    proveedor: {type: String},
-    detalles: {type: String},
-    img: {type: String}
+    // fecha: {type: Date},
+    // codigo: {type: Number},
+    // categoria: {type: String},
+    // producto: {type: String},
+    // precioCompra: {type: Number},
+    // precioVenta: {type: Number},
+    // stock: {type: Number},
+    // proveedor: {type: String},
+    // detalles: {type: String},
+    // img: {type: String},
+
+    codigo: { type: Number },
+    fecha: { type: Date },
+    categoria: { type: String },
+    producto: { type: String },
+    precioCompra: { type: Number },
+    precioVenta: { type: Number },
+    fechaPrecioVenta: { type: String},
+    stock: { type: Number },
+    proveedor: { type: String },
+    detalles: { type: String },
+    img: { type: String },
+    codAlt: {type: String},
+    atributos: {type: Array}
 })
 
 module.exports = mongoose.model('Producto', productoSchema)

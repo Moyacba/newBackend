@@ -15,7 +15,8 @@ const ventaSchema = mongoose.Schema({
         precioVenta: { type: Number },
         stock: { type: Number },
         proveedor: { type: String },
-        detalles: { type: String }
+        detalles: { type: String },
+        codAlt: { type: String }
     }],
     detalles: { type: String },
 })

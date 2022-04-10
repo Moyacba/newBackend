@@ -4,6 +4,7 @@ const router = require('express').Router();
 const productoController = require('./producto.controller');
 
 router.get('/', productoController.getAllProductos);
+router.put('/id/:id', productoController.putIdProducto);
 router.get('/:id', productoController.getProducto);
 router.post('/', productoController.addProducto);
 router.put('/img/:id', productoController.imgProducto);
