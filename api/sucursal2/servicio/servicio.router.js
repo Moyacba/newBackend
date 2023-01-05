@@ -2,7 +2,7 @@ const router = require('express').Router();
 const servicioController = require('./servicio.controller');
 
 router.get('/', servicioController.getAllServicios)
-router.post('/', servicioController.addServcio)
+router.post('/get', servicioController.addServcio)
 router.put('/', servicioController.putServicio)
 router.patch('/:id', servicioController.putServicio)
 /* router.get('/', serviceController.getAllService);

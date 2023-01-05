@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+mongoosePaginate = require('mongoose-paginate-v2')
 
 const servicio1Schema = mongoose.Schema({
     cliente: { type: String },
@@ -24,6 +25,8 @@ const servicio1Schema = mongoose.Schema({
     fechaIn: { type: Date },
     fechaOut: { type: Date }
 })
+
+servicio1Schema.plugin(mongoosePaginate)
 
 module.exports = mongoose.model('Servicio1', servicio1Schema)
 

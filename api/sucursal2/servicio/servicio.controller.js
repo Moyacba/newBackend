@@ -2,7 +2,12 @@ const Servicio = require('./servicio.model');
 
 module.exports = {
     getAllServicios: async (req, res) => {
-        const servicios = await Servicio.find()
+        const options = {
+            limit: 10,
+            page: 1
+        }
+
+        const servicios = await Servicio.paginate({}, options)
         try {
             res.status(200).json(servicios)
         } catch (error) {
@@ -11,9 +16,11 @@ module.exports = {
     },
 
     addServcio: async (req, res) => {
+        const options = req.body
+
+        const servicios = await Servicio.paginate({}, options)
         try {
-            await Servicio(req.body).save()
-            res.status(200).json('Servicio registrado')
+            res.status(200).json(servicios)
         } catch (error) {
             res.status(500).json(error)
         }
