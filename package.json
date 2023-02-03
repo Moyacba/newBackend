@@ -4,15 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node .",
     "dev": "nodemon index.js",
-    "build": "node index.js"
-=======
-    "start": "node index.js",
-    "dev": "nodemon index.js"
->>>>>>> e0ce9ee1cab4674688281ce35cfe08a42c5204b0
-  },
+    "build": "node index.js"},
+    
   "author": "",
   "license": "ISC",
   "dependencies": {
